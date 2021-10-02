@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const url="https://jsonplaceholder.typicode.com/users"
+        const {useState,useEffect}=React
+        function Userselect(props)
+        {
+            const[users,setusers]=useState([])
+            const[display,setdisplay]=useState('')
+            useEffect(()=>{
+                axios.get(url)
+                .then((response)=>{
+                    const result=response.data
+                    setusers(result)
+                })
+            },[])
+            const changehandle=(e)=>{
+                let result1
+                const input=e.target.value
+                console.log(input)
+               const result= users.find(ele=>ele.name==input)
+
+                    {
+                        if(result)
+                        {
+                        result1= `${result.name}-${result.email}-${result.address.city}`
+                    }
+                
+                
+                setdisplay(result1)
+                    }
+            }
+            return (
+                <div>
+                    <label>User</label>
+                    <select onChange={changehandle}>
+                        <option value=''>select option</option>
+                        {users.map((ele)=>{
+                            return <option key={ele.id} value={ele.name} >{ele.name} </option>
+                        })}
+                        </select>
+                        <h1>{display}</h1>
+
+                    </div>
+            )
+        }
+        ReactDOM.render(<Userselect />,roothandle)
+
+        </script>
+    </body>
+</html>

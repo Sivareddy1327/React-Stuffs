@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function App(props)
+        {
+            return (
+                <div>
+                <h1>om Namo Shivaiah</h1>
+                <p style={{borderStyle : 'dotted',borderWidth : 'medium',borderColor :'red'}}>This is paragraph</p>
+                <p style={{borderStyle : 'dashed', borderWidth : 'thick',borderColor:"green"}}>This is paragraph</p>
+                <p style={{borderStyle : 'solid',borderWidth:'2px',borderColor:'blue green yellow pink'}}>This is paragraph</p>
+                <p style={{borderStyle : 'double',borderWidth:'5px'}}>This is paragraph</p>
+                <p style={{borderStyle : 'groove',borderWidth:'10px 5px'}}>This is paragraph</p>// top 10px rigth 10px and bottom 5px left 5px
+                <p style={{borderStyle : 'ridge',borderWidth:'40px 30px 20px 10px'}}>This is paragraph</p>
+                   //40px=top,30px=right,20px=bottom,10px=left 
+                <p style={{borderStyle : 'inset'}}>This is paragraph</p>
+                <p style={{borderStyle : 'outset'}}>This is paragraph</p>
+                <p style={{borderStyle : 'none'}}>This is paragraph</p>
+                <p style={{borderStyle : 'hidden'}}>This is paragraph</p>
+
+
+                // specific
+                <p style={{borderTopStyle : "dotted",borderRightStyle : 'solid',borderBottomStyle: 'dotted',borderLeftStyle:'solid'}}>This is paragraph</p>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>   
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <style>
+        body{
+            background-color: burlywood;
+        }
+    </style>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function App(props)
+        {
+            return (
+                <div>
+                <h1 style={{textAlign : 'center' ,marginLeft : '300px',border : '2px solid green',color : "white", width : '50%',height : '100px', backgroundColor : "orange"}}>om Namo Shivaiah</h1>
+                <p>This is image very beautiful for looking glorous and look in UI </p>
+                <img style={{margin : 'auto', display : 'block', padding : 'auto'}} src="C:/Users/Ravendrareddy/Pictures/photo/received_263111857651119.png"/>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>   
+</html>

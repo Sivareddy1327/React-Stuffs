@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+          const {useState}=React
+        function Randomnumbers(props)
+        {
+            const [numbers,setnumbers]=useState([])
+
+            const addItem=()=>
+            {
+                const random=Math.round(Math.random()*100)
+                //using slice method for deep copy
+                //const newnumbers=numbers.slice(0)
+                // using spread operator 
+               //const newnumbers=[...numbers,random]
+               //using concat method
+               const newnumbers=numbers.concat(random)
+              
+            
+              console.log(newnumbers)
+              setnumbers(newnumbers)
+            }
+            return (
+                <div>
+                <h1>Total -{numbers.length}</h1>
+                <button onClick={addItem}>Add</button>
+                </div>
+            )
+        }
+        ReactDOM.render(<Randomnumbers />,roothandle)
+
+
+        </script>
+    </body>
+</html>

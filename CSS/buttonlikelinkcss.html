@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <style>
+        a:link{
+            color : blue
+        }
+        a:visted{
+            color : green
+        }
+        a:hover{
+            color :greenyellow;
+            text-decoration: underline;
+        }
+        a:active{
+            color: honeydew;
+        }
+    </style>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function App(props)
+        {
+            return (
+                <div>
+                <h1>om Namo Shivaiah</h1>
+                <a href="" target='_blanks' style={{textDecoration : "none",color : 'white',border :'1px solid gray',padding :'20px',backgroundColor:'green',textAlign : 'center'}}>Sivareddy</a>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>   
+</html>

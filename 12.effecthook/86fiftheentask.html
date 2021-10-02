@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const{useState,useEffect}=React
+        const url='https://us1.locationiq.com/v1/reverse.php?key=pk.fe5dc0d2f63b554e9d5b3e2c734484b4&lat=12.9715987&lon=77.5945627&format=json'
+        function Getlocation(props){
+            const[location,setlocation]=useState({})
+            const[display,setdisplay]=useState([])
+
+             useEffect(()=>{
+                 axios.get(url)
+                 .then((response)=>{
+                     const result=response.data
+                     setlocation(response.data)
+                     console.log(response.data)
+                 })
+             },[])
+             const handlelocation=()=>{
+        
+                 console.log(location.place_id,location.lat,location.address.city)
+                 const result=(
+                     <div>
+                        <h1>Latitude-{location.lat}</h1>
+                        <h1>Longitude-{location.lon}</h1>
+                        <h1>City-{location.address.city}</h1>
+                        </div>
+                 )
+                 setdisplay(result)
+
+                
+                
+                         
+                    
+                
+                
+             }
+            return (
+                <div>
+                <h1>Geo Location</h1><hr/>
+                {display}
+                <button onClick={handlelocation}>Getlocation</button>
+            
+            
+            
+               
+                
+                </div>
+            )
+        }
+        ReactDOM.render(<Getlocation />,roothandle)
+
+
+
+
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const url="https://jsonplaceholder.typicode.com/users"
+        const {useState,useEffect}=React
+        function Userinfo(props){
+            const[data,setdata]=useState([])
+            const[email,setemail]=useState('')
+            const[user,setuser]=useState('')
+            useEffect(()=>{
+                axios.get(url)
+                .then((response)=>{
+                    const result=response.data
+                 setdata(result)
+                })
+            },[])
+            const handlechange=(e)=>{
+                const input=e.target.value
+                setemail(input)
+              
+            }
+            const handlesubmit=(e)=>{
+                let result1
+               e.preventDefault()
+               console.log(email)
+               const result=data.find(ele=>ele.email== email)
+                {
+                    if(result){
+                       result1=`${result.name}-${result.email}-${result.address.city}`
+                    }
+                    else{
+                        result1='not found Record'
+                    }
+                }
+                
+            
+                
+                setuser(result1)
+               
+                console.log(result1)
+                
+                
+                
+            
+            }
+            return (
+                <div>
+                    <h1>{user}</h1>
+                    <form onSubmit={handlesubmit}>
+                    <input type='text' value={email} placeholder='enter by email id' onChange={handlechange}/>
+                    <input type='submit'/>
+                    </form>
+                    </div>
+            )
+        }
+      
+        ReactDOM.render(<Userinfo />,roothandle)
+
+        </script>
+    </body>
+</html>

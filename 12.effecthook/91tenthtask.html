@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const url="https://restcountries.eu/rest/v2/all"
+
+
+        const {useState,useEffect}=React
+
+        function Table(props)
+        {
+            const {display} = props
+            return (
+                <div>
+                    { display.length > 0 && 
+                        <table>
+                <thead>
+                  <tr>
+                    <th>flag</th>
+                    <th>name</th>
+                    <th>capital</th>
+                  </tr>
+                </thead>
+                {display.map((ele, i) => {
+                  return (
+                    <tbody key={i}>
+                      <tr>
+                        <td>
+                          <img
+                            src={ele.flag}
+                            alt={ele.name}
+                            height="50px"
+                            width="50px"
+                          />
+                        </td>(
+                        <td>{ele.name}</td>
+                        <td>{ele.capital}</td>
+                      </tr>
+                    </tbody>
+                  );
+                })}
+              </table>
+                    }
+                
+                </div>
+            )
+        }
+        function Displaycountries(props)
+        {
+            const[country,setcountry]=useState([])
+            const[data,setdata]=useState([])
+            const[display,setdisplay]=useState([])
+            useEffect(()=>{
+                axios.get(url)
+                .then((response)=>{
+                    const result=response.data
+                    setcountry(result)
+                    
+                    
+                })
+            },[])
+      
+            const handlechange=(e)=>{
+                let result1
+               const input=e.target.value
+               
+               const borders=country.find(ele=>ele.name==input).borders;
+               if(borders.length > 0)
+               {
+                   const data = "https://restcountries.eu/rest/v2/alpha?codes=" +
+              borders.join(";")
+                   axios.get(data)
+                   .then((response)=>{
+                       const result = response.data
+                       setdisplay(result)
+                   })
+               }
+               else
+               {
+                   setdisplay([])
+               }
+
+
+            }
+            return (
+                <div>
+                    <select onChange={handlechange}>
+                        <option value="">select option</option>
+                        {country.map((ele)=>{
+                            return <option key={ele.name} value={ele.name}>{ele.name}</option>
+                        })}
+                       
+                        </select>
+
+                    <Table display={display}/>
+                    </div>
+            )
+        }
+        
+        ReactDOM.render(<Displaycountries />,roothandle)
+
+        </script>
+    </body>
+</html>

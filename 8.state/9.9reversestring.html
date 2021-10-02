@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const {useState}=React
+        function Reversestr(props)
+    {
+        const [str,setstr]=useState('dct acadmey')
+        const reverse=()=>{
+            // let result=''
+            
+            // for(let i=str.length-1;i>=0;i--)
+            // {
+            //    result=result+str[i]
+            // }
+
+            const result=str.split('').reverse().join('')
+            setstr(result)
+        }
+             
+        
+        return (
+            <div>
+                <h1>{str}</h1>
+                <button onClick={()=>{reverse()}}>click!!!</button>
+                </div>
+        )
+    }
+
+    ReactDOM.render(<Reversestr />,roothandle)
+
+
+        </script>
+    </body>
+</html>

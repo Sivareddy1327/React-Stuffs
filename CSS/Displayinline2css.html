@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <style>
+    span.a{
+         display:   inline;
+         height : 50px;
+         padding : 10px; 
+         width : 30%;
+         border : 3px solid green; 
+         background-color : rgb(212, 212, 129);
+         text-align: center;
+        }
+
+        span.b{
+        display : inline-block;
+         height : 50px;
+         padding : 10px; 
+         width : 30%;
+         border : 3px solid green; 
+         background-color : yellow;
+         text-align: center;
+        }
+        span.c{
+        display : block;
+         height : 50px;
+         padding : 10px; 
+         width : 30%;
+         border : 3px solid green; 
+         background-color : yellow;
+         text-align: center;
+        }
+    </style>
+    <body>
+        <div id="root" >
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function App(props)
+        {
+            return (
+                <div>
+                <h1>om Namo Shivaiah</h1>
+                <div style={{margin : "20px"}}>Hi,siva reddy How are you, <span class = 'a'>where</span> are You from ? <span class='a'>How</span> is going Your life had your dinner </div>
+                <div>Hi,siva reddy How are you, <span class = 'b'>where</span> are You from ?<span class='b'> How</span> is going Your life had your dinner </div>
+                <div>Hi,siva reddy How are you,  <span class = 'c'>where</span> are You from ?<span class='c'> How</span> is going Your life had your dinner </div>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>   
+</html>

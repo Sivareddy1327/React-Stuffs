@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function App(props)
+        {
+            return (
+                <div>
+                <h1>om Namo Shivaiah</h1>
+                <ol style={{listStyleType : "circle"}}>
+                <li>Apple</li>
+                <li>Mango</li>
+                <li>Guava</li>
+                <li>Pine Apple</li>
+                </ol>
+                <ul style={{listStyle : "url(C:/Users/Ravendrareddy/Pictures/photo/received_263111857651119.png) inside circle "}}>
+                <li>Apple</li>
+                <li>Mango</li>
+                <li>Guava</li>
+                <li>Pine Apple</li>
+                </ul>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>   
+</html>

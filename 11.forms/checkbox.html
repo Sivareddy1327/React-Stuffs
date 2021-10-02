@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const {useState}=React
+        function Tablereserve(props)
+        {
+            const[username,setusername]=useState('')
+            const[vegonly,setvegonly]=useState(false)
+        
+            const handleusernamechange=(e)=>
+            {
+                const input =e.target.value
+                setusername(input)
+            }
+        
+            const handlesubmit=(e)=>
+            {
+                e.preventDefault()
+                alert(`${username}-vegpreference-${vegonly?'yes':'no'}`)
+
+            }
+            const handlevegonly=(e)=>
+            {
+                const input=e.target.checked
+                setvegonly(input)
+                console.log(input)
+
+            }
+            return (
+                <div>
+                    
+                
+                <form onSubmit={handlesubmit}>
+                    <label>username</label>
+                
+                <input type="text" value={username} onChange={handleusernamechange}/> <br/>
+                
+                <label>vegonly</label>
+                <input type='checkbox' checked={vegonly} onChange={handlevegonly}/>
+
+                
+                <input type="submit" value='reserve'/>
+                </form>
+                </div>
+            )
+        }
+        ReactDOM.render(<Tablereserve />,roothandle)
+
+
+        </script>
+    </body>
+</html>

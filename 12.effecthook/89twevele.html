@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const{useState,useEffect}=React
+        function Colorchange(props){
+            const[colors,setcolors]=useState(['green','yellow','black','pink','orange'])
+            const[c,setc]=useState('')
+            useEffect(()=>{
+                document.body.style.background = c
+                
+            },[c])
+            const handlechange=(e)=>{
+                const input=e.target.value
+                console.log(input)
+                setc(input)
+                
+            }
+            return (
+                <div>
+                    <select onChange={handlechange}>
+                        <option value=''>Select color</option>
+                        {colors.map((ele,i)=>{
+                            return <option key={i} value={ele}>{ele}</option>
+                        })}
+                        </select>
+                    </div>
+            )
+        }
+      
+        ReactDOM.render(<Colorchange />,roothandle)
+
+        </script>
+    </body>
+</html>

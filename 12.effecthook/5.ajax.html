@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const url='https://restcountries.eu/rest/v2/all/?fields=name;capital'
+        const {useState,useEffect}=React
+        function Countries(props)
+        {
+            const[country,setcountry]=useState([])
+            useEffect(()=>{
+                
+                const xhr=new XMLHttpRequest()
+                xhr.open("get",url)
+                xhr.send()
+                xhr.onload=function(){
+                    const result=JSON.parse(xhr.responseText)
+                    setcountry(result)
+                }
+            },[])
+            return (
+                <div>
+                    <h1>Listing countries-{country.length}</h1>
+                    <ul>
+                        {country.map((ele,i)=>
+                            {
+                                 return <li key={i}>{ele.name}-{ele.capital}</li>
+                            })}
+                        </ul>
+                    </div>
+            )
+        }
+        ReactDOM.render(<Countries />,roothandle)
+
+
+        </script>
+    </body>
+</html>

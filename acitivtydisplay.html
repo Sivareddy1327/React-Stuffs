@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>embedding expressions</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const data={source:'banglore',
+    destination:'mysore',
+     distance:'140 kms',
+      duration:'3 hours 30 mins'}
+      const ele=<p>the distance between {data.source} and {data.destination} is {data.distance} and the time taken to travel is {data.duration}</p>
+         ReactDOM.render(ele, roothandle)
+        </script>
+    </body>
+</html>

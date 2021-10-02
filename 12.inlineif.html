@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function StudentLinks(props)
+        {
+
+            return (
+                <div>
+        <a href='www.show.com'>show</a>
+        {props.user.role==='admin'&&<a href="ww.delete.com">delete</a>}
+                </div>
+            )
+        }
+        function App(props)
+        {
+            const user={id:1,name:'siva',role:'student'}
+            return (
+                <div>
+                <h1>Student Management System</h1>
+                <StudentLinks user={user}/>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>
+</html>

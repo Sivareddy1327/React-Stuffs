@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const fruits=[{name:'siva',id:1},
+                      {id:2,name:'ravi'},
+                      {id:3,name:'sreenu'}
+                             ]
+       
+        const ele = (
+            <div>
+                <h1>Listing user-{fruits.length}</h1>
+            <ul>
+            {fruits.map((ele)=>{
+                return (<li key={ele.id}>{ele.name}</li>)
+            })}
+    </ul>
+    </div>
+    )
+
+        ReactDOM.render(ele,roothandle)
+
+
+        </script>
+    </body>
+</html>

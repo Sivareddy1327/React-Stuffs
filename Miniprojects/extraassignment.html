@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+
+        const {useState,useEffect} = React
+        function App(props)
+        {
+            const [data,setData] = useState([])
+            const [search,setSearch] = useState('')
+            const [Like,setLike] = useState(0)
+            const [dislike,setdislike] = useState(0)
+            const [Match,setMatch] = useState([])
+            const [index,setindex] = useState(10)
+
+
+            useEffect(()=>{
+                axios.get('https://jsonplaceholder.typicode.com/posts?_page=${pages}&_limit='+{index})
+                .then((response)=>{
+                   const result = response.data.map((ele)=>{
+                       return {...ele, ...{like:0,dislike:0}}
+                   })
+                   setData(result)
+                })
+               
+            },[])
+
+             const handlechangeSearch=(e)=>{
+                 const input=e.target.value
+                 setSearch(input)
+                 const searchdata=data.filter((ele)=>{
+                     if(ele.title.includes(input))
+                     {
+                         return ele
+                     }
+                     
+                 })
+                 setMatch(searchdata)
+                 
+                 
+             }
+             const handlelike=(id)=>{
+              const result = data.find((ele)=>{
+                        if(ele.id == id)
+                        {
+                            setLike(ele.like=ele.like+1)
+                        }
+                    })
+                 }
+                 const handledislike=(id)=>{
+                    const result = data.find((ele)=>{
+                        if(ele.id == id)
+                        {
+                            setdislike(ele.dislike=ele.dislike+1)
+                        }
+                    })
+                 }
+
+                 const handleshowmore=()=>{
+                     let post = index+10
+                     axios.get(`https://jsonplaceholder.typicode.com/posts?_page&_limit= ${post}`)
+                         .then((response)=>{
+                             const result = response.data.map((ele)=>{
+                                 return {...ele ,...{like:0,dislike:0}}
+                             })
+                             setData(result)
+                             console.log(result)
+                         })
+                         setindex(post)
+                    
+                 }
+            return (
+                <div className='container'>
+                    <h1>Listing posts</h1>
+                   <input type='text' value={search} placeholder='search ' onChange={handlechangeSearch}/>
+                   <table className='table table-striped'>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>body</th>
+                            <th>Like</th>
+                            <th>Dislike</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {search ? Match.map((ele)=>{
+                                return <tr key={ele.id}>
+                                    <td>{ele.id}</td>
+                                    <td>{ele.title}</td>
+                                    <td>{ele.body}</td>
+                                    <td><button onClick={()=>{handlelike(ele.id)}} >Like</button> Like-{ele.like}</td>
+                                    <td><button onClick={()=>{handledislike(ele.id)}}>Dislike</button>Dislike-{ele.dislike}</td>
+                                    </tr>
+                            })
+                            :
+                            data.map((ele,i)=>{
+                                
+                                return <tr key={ele.id}>
+                                    <td>{ele.id}</td>
+                                    <td>{ele.title}</td>
+                                    <td>{ele.body}</td>
+                                    <td><button onClick={()=>{handlelike(ele.id)}} className='btn btn-primary'>Like</button> Like-{ele.like}</td>
+                                    <td><button onClick={()=>{handledislike(ele.id)}} className='btn btn-primary'>Dislike</button>Dislike-{ele.dislike}</td>
+                                    </tr>
+                            })} 
+                    
+                        
+                           </tbody>
+                    </table>
+                     <button onClick={handleshowmore} className='btn btn-primary'>showmore</button>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+        </script>
+    </body>
+</html>

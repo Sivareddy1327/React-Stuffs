@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const{useState,useEffect}=React
+        function Controlledcomponent(props)
+        {
+            const[name,setname]=useState('')
+            const[body,setbody]=useState('')
+            useEffect(()=>{
+                const data=JSON.parse(localStorage.getItem('name'))
+                const data1=JSON.parse(localStorage.getItem('body'))
+                setbody(data1)
+                setname(data)
+            },[])
+            useEffect(()=>{
+                localStorage.setItem('name',JSON.stringify(name))
+                localStorage.setItem('body',JSON.stringify(body))
+            },[name,body])
+
+            const handlename=(e)=>{
+                const input=e.target.value
+                setname(input)
+            }
+            const handlebody=(e)=>{
+                const input=e.target.value
+                setbody(input)
+            }
+            const handlesubmit=(e)=>{
+                e.preventDefault()
+                setname('')
+                setbody('')
+                
+            }
+            const reload=()=>{
+                
+            location.reload();
+            }
+            return (
+                <div>
+                    <h1>Story Book</h1>
+                    <form onSubmit={handlesubmit}>
+                    <label>Title</label>
+
+                    <input type='text' value={name}  onChange={handlename}/><br/>
+                    <label>body</label>
+
+                    <input type="text" value={body} onChange={handlebody}/><br/>
+                    
+                    <input type='submit' value='save'/>
+                    </form>
+                    <button onClick={reload}>reload</button>
+                    </div>
+            )
+        }
+        ReactDOM.render(<Controlledcomponent />,roothandle)
+
+
+        </script>
+    </body>
+</html>

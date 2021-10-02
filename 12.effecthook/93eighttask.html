@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const url="https://jsonplaceholder.typicode.com/users"
+        const {useState,useEffect}=React
+        function ListingTask(props)
+        {
+            const[checked,setchecked]=useState(false)
+            console.log(props)
+            const{userTask}=props
+            const styleline={'textDecoration' : 'line-through'}
+            const result=userTask.filter((ele)=>{
+                    return ele.completed
+                })
+            const handlechangecheck=(e)=>{
+                
+                  
+                const input=e.target.checked
+                console.log(input)
+                setchecked(input)
+            }
+                
+            return (
+                <div>
+                 
+                    {Object.keys(userTask).length > 0 ?
+                        <form>
+                                <input type='checkbox' onChange={handlechangecheck} checked={checked} />completed
+                                </form>
+                                :
+                                null
+                    }
+                    {checked ? <ul>
+                               {result.map((ele,i)=>{
+                                   return <li key={i}><s>{ele.title}</s></li>
+                               })}
+                               </ul>
+                            :
+                            <ul>
+                    {userTask.map((ele)=>{
+                        return <li key={ele.id} style={ele.completed ? styleline : null}>{ele.title}</li>
+                    })}
+                    </ul>
+                        }
+                </div>
+            )
+        }
+        function Userselect(props)
+        {
+            const[users,setusers]=useState([])
+            const[name,setname]=useState('')   
+            const[userTask,setuserTask]=useState([])
+            useEffect(()=>{
+                axios.get(url)
+                .then((response)=>{
+                    const result=response.data
+                    setusers(result)
+                })
+            },[])
+            
+
+            const changehandle=(e)=>{
+                const input=e.target.value
+                setname(input)
+               const url1=`https://jsonplaceholder.typicode.com/todos?userId=${input}`
+               axios.get(url1)
+               .then((response)=>{
+                   const result=response.data
+                   setuserTask(result)
+                })
+            }
+            return (
+                <div>
+                    <label>User</label>
+                    <select  onChange={changehandle}>
+                        <option value=''>select option</option>
+                        {users.map((ele)=>{
+                            return <option key={ele.id} value={ele.id} >{ele.name} </option>
+                        })}
+                        </select>
+                        <ListingTask userTask={userTask}/>
+                        
+                </div>
+            )
+        }
+        ReactDOM.render(<Userselect />,roothandle)
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

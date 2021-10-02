@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const url="https://jsonplaceholder.typicode.com/users/"
+        const {useState,useEffect}=React
+        function Userinfo(props){
+            const[data,setdata]=useState({})
+            const[id,setid]=useState('')
+            const[user,setuser]=useState('')
+            useEffect(()=>{
+                axios.get(url+id)
+                .then((response)=>{
+                    const result=response.data
+                 setdata(result)
+                })
+            },[])
+            const handlechange=(e)=>{
+                const input=e.target.value
+                setid(input)
+              
+            }
+            const handlesubmit=(e)=>{
+                let result1
+               e.preventDefault()
+               console.log(id)
+               const result=data.find(ele=>ele.id== id)
+                {
+                    if(result){
+                       result1=`${result.name}-${result.email}-${result.address.city}`
+                    }
+                    else{
+                        result1='not found'
+                    }
+                }
+                
+            
+                
+                setuser(result1)
+               
+                console.log(result1)
+                
+                
+                
+            
+            }
+            return (
+                <div>
+                    
+                    <form onSubmit={handlesubmit}>
+                    <input type='text' value={id} placeholder='enter by  id' onChange={handlechange}/>
+                    <input type='submit'/>
+                    </form>
+                    <h1>{user}</h1>
+                    </div>
+            )
+        }
+      
+        ReactDOM.render(<Userinfo />,roothandle)
+
+        </script>
+    </body>
+</html>

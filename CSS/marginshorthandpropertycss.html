@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function App(props)
+        {
+            return (
+                <div>
+                <h1 style={{textAlign : 'center'}}>om Namo Shivaiah</h1>
+                <h1 style= {{color : "red" ,textAlign : 'center', margin : "25px 50px 50px 50px"}}>This is heading</h1>
+                <p style ={{backgroundColor : 'gray' , color : 'cornflowerblue',
+                    textAlign:'center',marginTop : '50px' ,marginRight :"50px",
+                    marginBottom : '50px' , marginLeft : '50px'
+                    }}>
+                    This is paragraph
+                </p>
+
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>   
+</html>

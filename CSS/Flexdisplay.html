@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <style>
+        .flex-container {
+            background-color: blueviolet;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            align-content: space-between;
+
+        }
+        .flex-container > div{
+            background-color: burlywood;
+            padding: 20px;
+            margin : 30px;
+            
+        }
+        body{
+            background-color: brown;
+        }
+        ul{
+            list-style-type: none;
+        }
+
+    </style>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function App(props)
+        {
+            return (
+                <div class = "flex-container">
+                <div style={{order : '3'}}>
+                <h1>1</h1>
+                    <ul>
+                        <li>Home</li>
+                        <li>Contact</li>
+                        <li>About</li>
+                    </ul>
+                </div>
+                <div style={{order : '5' ,flexShrink : "5",}}>
+                    <h1>2</h1>
+                <h1>om Namo Shivaiah</h1>
+                <p>Hara Hara sambo shankara</p>
+                </div>
+                <div style={{order : "7"}}>
+                    <h1>3</h1>
+                    <ul>
+                        <li>Html</li>
+                        <li>Css</li>
+                        <li>Reactjs</li>
+                    </ul>
+                </div>
+                <div style={{order : '9', flexGrow : '1'}}>
+                    <h1>4</h1>
+                    <ul>
+                        <li>H</li>
+                        <li>C</li>
+                        <li>A</li>
+                    </ul>
+                </div>
+                <div style={{order : '1'}}>
+                    <h1>5</h1>
+                <h1>om Namo Shivaiah</h1>
+                <p>sambo shankara</p>
+                </div>
+                <div style={{order : '4'}}>
+                    <h1>6</h1>
+                    <ul>
+                        <li>H</li>
+                        <li>C</li>
+                        <li>js</li>
+                    </ul>
+                </div>
+                <div style={{order : '2'}}>
+                    <h1>7</h1>
+                    <ul>
+                        <li>tutorial</li>
+                        <li>memu</li>
+                        <li>About</li>
+                    </ul>
+                </div>
+                <div style={{order : '6'}}>
+                    <h1>8</h1>
+                <h1>Shivaiah</h1>
+                <p>shankara</p>
+                </div>
+                <div style={{order : '8'}}>
+                    <h1>9</h1>
+                    <ul>
+                        <li>hss</li>
+                        <li>nss</li>
+                        <li>Reactjs</li>
+                    </ul>
+                </div>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>   
+</html>

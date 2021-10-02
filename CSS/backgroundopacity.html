@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+        <style>
+        div{
+            background-color:  green;
+        } 
+        .name{
+            opacity: 0.3;
+        }
+        .siva{
+            opacity: 0.6;
+        }
+        .ravi{
+            opacity: 1;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function App(props)
+        {
+            return (
+                <div>
+                <h1 class = 'name'>om Namo Shivaiah</h1>
+                <h1 class = 'siva'>This is heading</h1>
+                <p class = 'ravi'>This is paragraph</p>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>   
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+         const {useState}=React
+
+         const products=[{id:1,name:'marker',price:200,quantity:1},
+        {id:2,name:'scale',price:30,quantity:1}]
+
+        function Pricedetails(props)
+        {
+            const {Totallength,cartTotal}=props
+            const deliverycharge=100
+            return (
+                <div>
+                    <h3>Price Details</h3>
+                    <b>price({Totallength} items)</b><br/>
+                    <b>delivery charges-{deliverycharge}</b><br/>
+                    <b>Total amount-{cartTotal+deliverycharge}</b>
+
+                    </div>
+            )
+        }
+
+        function MyCartItem(props)
+        {
+            const {name,id,quantity,price,removeItem,increment,decrement}=props
+            return (
+                <div>
+                    <b>{name}</b><br/>
+                    <p>INR {price}</p>
+                    <button onClick={()=>{decrement(id)}} disabled={quantity===1}>-</button>{quantity}
+                    <button onClick={()=>{increment(id)}}>+</button>
+                    <button onClick={()=>{removeItem(id)}}> remove </button>
+                    <hr/>
+                    
+                    </div>
+            )
+        }
+        function App(props)
+        {
+            // state variable
+           const[products, setproduct]=useState([{id:1,name:'marker',price:200,quantity:1},
+        {id:2,name:'scale',price:30,quantity:1}])
+
+        const calSum=()=>{
+            let sum=0
+            products.forEach((ele)=>
+            {
+               sum=sum+ele.price*ele.quantity
+            })
+            return sum
+        }
+           // callback 
+        const removeItem=(id)=>
+        {
+        
+            const result=products.filter((ele)=>
+            {
+                return ele.id != id
+            })
+            setproduct(result)
+
+        }
+        // callback
+        const increment=(id)=>
+        {
+         const result=products.map((ele)=>
+         {
+             if(ele.id==id)
+             {
+                 return {...ele,...{quantity:ele.quantity+1}}
+             }
+             else{
+                 return {...ele}
+             }
+         })
+         setproduct(result)
+        }
+         // callback
+        const decrement=(id)=>{
+            const result=products.map((ele)=>
+            {
+                if(ele.id==id)
+                {
+                    return {...ele,...{quantity:ele.quantity-1}}
+                }
+                else{
+                    return {...ele}
+                }
+            })
+            setproduct(result)
+
+        }
+        return (
+            <div>
+                <h1>Mycart({products.length})</h1>
+                {products.map((ele)=>
+                    {
+                        return  <MyCartItem key={ele.id}
+                         {...ele} 
+                         removeItem={removeItem}
+                         increment={increment}
+                         decrement={decrement}/>
+                    })}
+                    <Pricedetails 
+                    Totallength={products.length} 
+                    cartTotal={calSum()}
+                   />
+               
+                </div>
+        )
+        }
+
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>
+</html>

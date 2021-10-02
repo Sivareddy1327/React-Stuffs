@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+            const {useState,useEffect} = React
+        function Generaterandom(props)
+        {
+            const [random,setrandom] = useState('')
+            const [even,seteven] =useState([])
+            useEffect(()=>{
+                const arr = [...even]
+                if(random % 2==0 && random != '')
+                {
+                    arr.push(random)
+                }
+                console.log(arr)
+                seteven(arr)
+            }, [random])
+
+            useEffect(()=>{
+                setInterval(function(){
+                    const randomnumber=Math.round(Math.random()*100)
+                    setrandom(randomnumber)
+            },5000)
+
+                },[])
+            
+
+             return (
+                 <div>
+                    <h1>Random number-{even.length}</h1>
+                    { even.map((ele,i)=>{
+                        return <li key={i}>{ele}</li>
+                    })}
+
+                 </div>
+             )
+        }
+
+        ReactDOM.render(<Generaterandom />,roothandle)
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const color = {
+   red: ['energy', 'strength', 'power', 'courage']
+        }
+const ele = (
+    <div>
+        <h1 style={{color:'red'}}>Example output</h1>
+            <hr/>
+            <h1>Red - {color.red.join(',')} </h1>
+        </div>
+)
+ReactDOM.render(ele,roothandle)
+
+
+        </script>
+    </body>
+</html>

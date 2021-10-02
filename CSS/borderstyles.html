@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function App(props)
+        {
+            return (
+                <div>
+                <h1>om Namo Shivaiah</h1>
+                <p style={{borderStyle : 'dotted'}}>This is paragraph</p>
+                <p style={{borderStyle : 'dashed'}}>This is paragraph</p>
+                <p style={{borderStyle : 'solid'}}>This is paragraph</p>
+                <p style={{borderStyle : 'double'}}>This is paragraph</p>
+                <p style={{borderStyle : 'groove'}}>This is paragraph</p>
+                <p style={{borderStyle : 'ridge'}}>This is paragraph</p>
+                <p style={{borderStyle : 'inset'}}>This is paragraph</p>
+                <p style={{borderStyle : 'outset'}}>This is paragraph</p>
+                <p style={{borderStyle : 'none'}}>This is paragraph</p>
+                <p style={{borderStyle : 'hidden'}}>This is paragraph</p>
+                <p style={{borderStyle : "dotted dashed solid double " }}>This is paragraph</p>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>   
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const {useState}=React
+        function Textdisplay(props)
+        {
+            const [status,setstatus]=useState(true)
+            const {body,title}=props
+            const toggle=()=>
+            {
+                const result=status?false:true
+                setstatus(result)
+            }
+            return (
+                <div>
+                    {status&&<p>{body}</p>}
+                    <button onClick={toggle}>{status?'hide':'show'}-{title}</button>
+                    </div>
+            )
+        }
+        function App(props)
+        {
+            const data=[{title:'react article',body:'react is open source libiray.simple and light weigth.'},
+        {title:'javascript artcle',body:'javascript is used to develop web application.it is also known as vanila javascript'},
+    {title:'nodejs article',body:'node js is used in backend coding part'}]           
+
+    return (
+        <div>
+            <h1>Listing articles</h1>
+            {data.map((ele)=>
+                {
+                    return <Textdisplay {...ele}/>
+                })}
+            </div>
+    )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+        </script>
+    </body>
+</html>

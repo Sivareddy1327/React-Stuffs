@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function Alertme(props)
+        {
+            function showname()
+            {
+                alert(`hi`+props.name)
+            }
+          return (
+              <button onClick={showname}>Alertme</button>
+          )
+        }
+        const ele = <Alertme name='siva'/>
+        ReactDOM.render(ele,roothandle)
+
+
+        </script>
+    </body>
+</html>

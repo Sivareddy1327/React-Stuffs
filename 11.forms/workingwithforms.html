@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const {useState}=React
+        function Searchbar(props)
+        {
+            const[search,setsearch]=useState('')
+            const handlesearchchange=(e)=>
+            {
+                const input =e.target.value
+                setsearch(input)
+            }
+            return (
+                <form>
+                <input type="text" value={search} onChange={handlesearchchange}/>
+                </form>
+            )
+        }
+        ReactDOM.render(<Searchbar />,roothandle)
+
+
+        </script>
+    </body>
+</html>

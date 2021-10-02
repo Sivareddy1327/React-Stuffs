@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const {useState}=React
+        function Userlaptop(props)
+        {
+            const[username,setusername]=useState('')
+            const[laptop,setlaptop]=useState('')
+            const[issubmitted,setissubmitted]=useState(false)
+            const brands=['hp','dell','samsung','apple','acer']
+            const handleusernamechange=(e)=>
+            {
+                const input =e.target.value
+                setusername(input)
+            }
+            const handlelaptopchange=(e)=>
+            {
+               const input=e.target.value
+               setlaptop(input)
+
+            }
+            const handlesubmit=(e)=>
+            {
+                e.preventDefault()
+                setissubmitted(!issubmitted)
+
+            }
+            return (
+                <div>
+                    {issubmitted && <h1>{username} -{laptop}</h1>}
+                
+                <form onSubmit={handlesubmit}>
+                    <label>username</label>
+                
+                <input type="text" value={username} onChange={handleusernamechange}/> <br/>
+                <label>laptop</label>
+                <select value={laptop} onChange={handlelaptopchange}>
+                    <option value=''>Select option</option>
+                    <option value='Hp'>HP</option>
+                    {brands.map((ele,i)=>
+                        {
+                        return   <option value={ele} key={i}>{ele}</option>
+                        })}
+                    </select><br/>
+                <input type="submit" value='save user preference'/>
+                </form>
+                </div>
+            )
+        }
+        ReactDOM.render(<Userlaptop />,roothandle)
+
+
+        </script>
+    </body>
+</html>

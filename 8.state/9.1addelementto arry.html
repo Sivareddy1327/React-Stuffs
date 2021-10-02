@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+          const {useState}=React
+        function Randomnumbers(props)
+        {
+            const [numbers,setnumbers]=useState([])
+
+            const addItem=()=>
+            {
+              const random=Math.round(Math.random()*100)
+              numbers.push(random)
+              console.log(numbers)
+              setnumbers(numbers)
+            }
+            return (
+                <div>
+                <h1>Total -{numbers.length}</h1>
+                <button onClick={addItem}>Add</button>
+                </div>
+            )
+        }
+        ReactDOM.render(<Randomnumbers />,roothandle)
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>embedding expressions</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const user ={firstName:'siva',lastName:'reddy'}
+        const fullName = (user) =>{
+            return `${user.firstName}-${user.lastName}`
+        }
+
+         const ele=<h1>hello, {fullName(user)}</h1>
+
+         ReactDOM.render(ele, roothandle)
+        </script>
+    </body>
+</html>

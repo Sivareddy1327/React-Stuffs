@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+         const {useState}=React
+        function Font(props)
+        {
+            const[size,setsize]=useState('50')
+            const increment=()=>
+            {
+               setsize(size+5)
+                
+            }
+            const h1style={fontSize:size+'px',display:'inline'}
+            const decrement=()=>
+            {
+                const result=size-5
+                if(!(result<20))
+                {
+                    setsize(size-5)
+                }
+                else{
+                    alert('size cannot possible 20px')
+                }
+            }
+            return (
+                <div>
+                    <button onClick={decrement}>-</button>
+                    <h1 style={h1style}>Dct Acadmey</h1>
+                    <button onClick={increment}>+</button>
+                    </div>
+            )
+        }
+        ReactDOM.render(<Font />,roothandle)
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        
+        class Userlist extends React.Component{
+            constructor (){
+                console.log('constuctor')
+                super()
+                this.state = {
+                    users: []
+                }
+            }
+        
+        componentDidMount()
+        {
+            console.log('component Did Mount')
+            const url = 'http://jsonplaceholder.typicode.com/users'
+            const xhr = new XMLHttpRequest()
+            xhr.open('GET' ,url)
+            xhr.send()
+            xhr.onload = function() {
+                const users = JSON.parse(xhr.responseText)
+                console.log(users)
+                this.setState({ users })
+            }
+        }
+    
+        render() 
+        {
+             console.log('render')
+            return (
+                <div>
+                    <h1>Listing users-{this.state.users.length}</h1>
+                </div>
+            )
+        }
+    }
+        
+        ReactDOM.render(<Userlist />,roothandle)
+        </script>
+    </body>
+</html>

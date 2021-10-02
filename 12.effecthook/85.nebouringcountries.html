@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+        Assignment - 10
+    </title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script type="text/babel">
+      const rootHandle = document.getElementById("root");
+      const { useState, useEffect } = React;
+      const url = "https://restcountries.eu/rest/v2/all";
+
+      const NeighbouringCountries = (props) => { // child component
+        const { countryData } = props;
+
+        return (
+          <div>
+            <h3>Neighbouring Countries ({countryData.length})</h3>
+            {countryData.length > 0 && (
+              <table>
+                <thead>
+                  <tr>
+                    <th>flag</th>
+                    <th>name</th>
+                    <th>capital</th>
+                  </tr>
+                </thead>
+                {countryData.map((ele, i) => {
+                  return (
+                    <tbody key={i}>
+                      <tr>
+                        <td>
+                          <img
+                            src={ele.flag}
+                            alt={ele.name}
+                            height="50px"
+                            width="50px"
+                          />
+                        </td>
+                        <td>{ele.name}</td>
+                        <td>{ele.capital}</td>
+                      </tr>
+                    </tbody>
+                  );
+                })}
+              </table>
+            )}
+          </div>
+        );
+      };
+
+
+      const Countries = (props) => { //parent component
+        const [country, setCountry] = useState([]);
+        const [selected, setSelected] = useState("");
+        const [neighbourC, setNeighbourC] = useState([]);
+        const [showList, setShowList] = useState(false);
+
+        useEffect(() => {
+          axios.get(url)
+          .then((resp) => {
+            const result = resp.data;
+            setCountry(result);
+          });
+        }, []);
+
+          const handleChange = (e) => {
+          const countryInput = e.target.value;
+          setSelected(countryInput);
+
+          const borders = country.find(
+            (ele) => ele.name === countryInput
+          ).borders;
+          
+          
+
+          if (borders.length > 0) {
+            const url1 =
+              "https://restcountries.eu/rest/v2/alpha?codes=" +
+              borders.join(";");
+              console.log(url1)
+
+
+            axios.get(url1).then((response) => {
+              setNeighbourC(response.data);
+            });
+
+            setShowList(true);
+          } else {
+            setNeighbourC([]);
+          }
+        };
+
+        return (
+          <div>
+            <form>
+              <select value={selected} onChange={handleChange}>
+                <option>select country</option>
+                {country.map((ele, i) => {
+                  return <option key={i}>{ele.name}</option>;
+                })}
+              </select>
+            </form>
+            {showList && <NeighbouringCountries countryData={neighbourC} />}
+          </div>
+        );
+      };
+
+      ReactDOM.render(<Countries />, rootHandle);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <style>
+        .flex-container {
+            background-color: blueviolet;
+           display: grid;
+           grid-template-columns: none none none ;
+           grid-template-rows: none none;
+
+        }
+        .flex-container > div{
+            background-color: burlywood;
+            border : 1px solid red ;
+            padding: 20px;
+            margin : 30px;
+            
+        }
+        body{
+            background-color: brown;
+        }
+        ul{
+            list-style-type: none;
+        }
+
+    </style>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function App(props)
+        {
+            return (
+                <div class = "flex-container">
+                <div>
+                <h1>1</h1>
+                    <ul>
+                        <li>Home</li>
+                        <li>Contact</li>
+                        <li>About</li>
+                    </ul>
+                </div>
+                <div>
+                    <h1>2</h1>
+                <h1>om Namo Shivaiah</h1>
+                <p>Hara Hara sambo shankara</p>
+                </div>
+                <div>
+                    <h1>3</h1>
+                    <ul>
+                        <li>Html</li>
+                        <li>Css</li>
+                        <li>Reactjs</li>
+                    </ul>
+                </div>
+                <div>
+                    <h1>4</h1>
+                    <ul>
+                        <li>H</li>
+                        <li>C</li>
+                        <li>A</li>
+                    </ul>
+                </div>
+                <div>
+                    <h1>5</h1>
+                <h1>om Namo Shivaiah</h1>
+                <p>sambo shankara</p>
+                </div>
+                <div>
+                    <h1>6</h1>
+                    <ul>
+                        <li>H</li>
+                        <li>C</li>
+                        <li>js</li>
+                    </ul>
+                </div>
+                <div>
+                    <h1>7</h1>
+                    <ul>
+                        <li>tutorial</li>
+                        <li>memu</li>
+                        <li>About</li>
+                    </ul>
+                </div>
+                <div>
+                    <h1>8</h1>
+                <h1>Shivaiah</h1>
+                <p>shankara</p>
+                </div>
+                <div>
+                    <h1>9</h1>
+                    <ul>
+                        <li>hss</li>
+                        <li>nss</li>
+                        <li>Reactjs</li>
+                    </ul>
+                </div>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>   
+</html>

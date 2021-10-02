@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function Counter(props)
+        {
+            let count=0
+            return (
+                <div>
+                <h1>{count}</h1>
+                <button onClick={()=>{count++
+                console.log(count)
+                }}>+1</button>
+                </div>
+
+            )
+        }
+        ReactDOM.render(<Counter />,roothandle)
+
+        </script>
+    </body>
+</html>

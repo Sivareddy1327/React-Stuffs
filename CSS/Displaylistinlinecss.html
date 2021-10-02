@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <style>
+        li{
+            display: inline-block;
+            padding:  20px;
+        }
+    </style>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function App(props)
+        {
+            return (
+                <div>
+                <h1>om Namo Shivaiah</h1>
+                <ol style={{listStyleType : "none",backgroundColor : 'green',textAlign : "center",padding : 0,margin: 0}}>
+                <li>Apple</li>
+                <li>Mango</li>
+                <li>Guava</li>
+                <li>Pine Apple</li>
+                </ol>
+                <ul style={{listStyleType : "circle",listStylePosition : "inline"}}>
+                <li>Apple</li>
+                <li>Mango</li>
+                <li>Guava</li>
+                <li>Pine Apple</li>
+                </ul>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>   
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+
+        const {useState}=React
+        function Trackclicks(props)
+        {
+            const [count,setcount]=useState(0)
+            const [clicks,setclicks]=useState(0)
+            const increment=()=>
+            {
+                setcount(count + 1)
+                setclicks(clicks + 1)
+            }
+            const decrement=()=>
+            {
+                setcount(count - 1)
+                setclicks(clicks + 1)
+            }
+            return (
+                <div>
+                    <h1>count-{count}, clicks-{clicks}</h1>
+                    <button onClick={increment}>up</button>
+                    <button onClick={decrement}>down</button>
+
+                </div>
+            )
+            
+        }
+        ReactDOM.render(<Trackclicks />,roothandle)
+
+
+        </script>
+    </body>
+</html>

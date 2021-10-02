@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const url="https://jsonplaceholder.typicode.com/users/1"
+        const {useState,useEffect}=React
+        function Userinfo(props){
+        const[user,setuser]=useState({})
+            useEffect(()=>{
+                axios.get(url)
+                .then((response)=>{
+                    const result=response.data
+                    console.log(result)
+                 setuser(result)
+                 
+                })
+            },[])
+           
+            return (
+                <div>
+
+                    {Object.keys(user).length > 0 && <p>{user.name}-{user.email}</p>}
+                    </div>
+            )
+        }
+      
+        ReactDOM.render(<Userinfo />,roothandle)
+
+        </script>
+    </body>
+</html>

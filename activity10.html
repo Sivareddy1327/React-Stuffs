@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const colors = { 
+   red: ['energy', 'strength', 'power', 'courage'], 
+   blue: ['loyalty', 'trust', 'stability', 'confidence'], 
+   orange: ['excitment', 'fun', 'haste', 'action'], 
+   yellow: ['cheerfulness', 'happiness', 'joy', 'optimism'] 
+}
+const element = (
+    <div>
+        <h1 style={{color:'red'}}>Example output</h1>
+            <hr/>
+        <h1>Colors & it's symbols - object</h1>
+        {Object.keys(colors).map((ele)=>
+        {
+            return (
+                <div key={ele}>
+                    <h1>{ele.toUpperCase()}</h1>
+                    <ol>
+                    {colors[ele].map((ele,i)=>{
+                       return <li key ={i}>{ele}</li>
+                    })}
+                    </ol>
+                    </div>
+            )
+        })}
+    
+
+      
+       
+    </div>
+)
+ReactDOM.render(element,roothandle)
+
+
+        </script>
+    </body>
+</html>

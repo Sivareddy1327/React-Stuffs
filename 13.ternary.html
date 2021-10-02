@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function CartStatus(props)
+        {
+            const {items}=props
+
+            return (
+                <div>
+        {items.length==0 ? (<p>your cart is empty</p>):(<p>your cart has {items.length} items in the cart</p>)}
+                </div>
+            )
+        }
+        function App(props)
+        {
+            const items=[{id:1,name:'bannaa',quantity:1,price:20}]
+            return (
+                <div>
+                <h1>Cart Page</h1>
+                <CartStatus items={items}/>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>
+</html>

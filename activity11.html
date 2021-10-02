@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const users =  [
+        { "id": 1, "email": "george@gmail.com", "first_name": "George", "avatar": "https://randomuser.me/api/portraits/men/32.jpg" },
+        { "id": 2, "email": "weaver@gmail.com", "first_name": "Weaver", "avatar": "https://randomuser.me/api/portraits/men/46.jpg" },
+        { "id": 3, "email": "wong@gmail.com", "first_name": "Wong", "avatar": "https://randomuser.me/api/portraits/men/36.jpg" },
+        { "id": 4, "email": "eve@gmail.com", "first_name": "Eve", "avatar": "https://randomuser.me/api/portraits/women/79.jpg" }
+     ]
+
+     const usersorted=users.sort((a,b)=>
+{
+    let aName=a.first_name.toLowerCase();
+    let bName=b.first_name.toLowerCase();
+    if(aName<bName)
+    {
+        return -1
+    }
+    if(aName > bName)
+    {
+        return 1
+    }
+    return 0
+
+})
+console.log(usersorted)
+     
+
+     const ele = (
+         <div>
+            <h1>listing table </h1>
+            <table border='1'>
+                <thead>
+                    <tr>
+                        
+                            <th>First_name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {usersorted.map((ele,i)=>{
+                            return <tr key ={i}> 
+                            <td>{ele.first_name}</td>
+                            </tr>
+                        })}
+                            
+                          
+                            
+                        </tbody>
+                </table>
+            </div>
+     )
+      ReactDOM.render(ele,roothandle)
+
+
+        </script>
+    </body>
+</html>

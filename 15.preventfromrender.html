@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function PaymentInfo(props)
+        {
+          const {isDue}=props
+    
+             if(!isDue)
+             {
+                 return null
+             }
+            return (
+                <div>
+        <h2>Payment Info</h2>
+                </div>
+            )
+        }
+        function App(props)
+        {
+            const isDue=false
+            return (
+                <div>
+                <h1>Collect Paymet</h1>
+                <PaymentInfo isDue={isDue}/>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>
+</html>

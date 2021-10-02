@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const info={name:'siva',phone:'9000813272',email:'sivareddy@gmail.com',avatar:'https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg'}
+        
+        function Contact(props)
+        {
+            console.log(props)
+            return (
+                <div>
+                    <img src={props.avatar}/>
+                    <h2>{props.name}</h2>
+                    
+                    </div>
+            )
+        }
+    
+        const ele = <Contact name={info.name}  avatar={info.avatar}  email={info.email}/>
+        ReactDOM.render(ele,roothandle)
+
+
+        </script>
+    </body>
+</html>

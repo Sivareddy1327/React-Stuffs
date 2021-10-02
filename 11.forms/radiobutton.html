@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const {useState}=React
+        function Useradress(props)
+        {
+            const[address,setaddress]=useState('')
+            const[addtype,setaddType]=useState('')
+        
+            const handleaddresschange=(e)=>
+            {
+                const input =e.target.value
+                setaddress(input)
+            }
+            const handleAddtypechnge=(e)=>
+            {
+                const input=e.target.value
+                setaddType(input)
+
+            }
+        
+            
+            return (
+                <div>
+                    
+                
+                <form>
+                    <label>address</label>
+                
+                <textarea type="text" value={address} onChange={handleaddresschange}></textarea> <br/>
+                <label>Type address</label>
+                <input type='radio' value='home' checked={addtype=='home'} onChange={handleAddtypechnge}/>Home
+                <input type='radio' value='office' checked={addtype=='office'} onChange={handleAddtypechnge}/>Office
+
+                
+        
+                </form>
+                </div>
+            )
+        }
+        ReactDOM.render(<Useradress />,roothandle)
+
+
+        </script>
+    </body>
+</html>

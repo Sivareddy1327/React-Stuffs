@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">    
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const url="http://api.exchangeratesapi.io/v1/latest?access_key=a31bd29ab793562dbed67c33f04d9489&format=1"
+        const {useState,useEffect}=React
+        function Changedoller(props)
+        {
+            const[value,setvalue]=useState(0)
+            const[data,setdata]=useState({})
+            const[Inr,setInr]=useState('')
+            useEffect((response)=>{
+                axios.get(url)
+                .then((response)=>{
+                    const result=response.data
+                    setdata(result)
+                    
+                })
+            },[])
+            const handlechange=(e)=>{
+               const input=e.target.value
+               console.log(input)
+               setvalue(input)
+               const inr=(`${data.rates.INR}`/`${data.rates.USD}`).toFixed(2)
+               setInr(inr)
+               
+            }
+            return (
+                <div>
+                
+                    <h1>USD-{value}</h1>
+                    <h1>IND-{value*Inr}</h1>
+                    <input type='range' min='0' max='100' onChange={handlechange} />
+                    <p>note:1USD=74.225INR</p>
+                    </div>
+            )
+        }
+        
+        ReactDOM.render(<Changedoller />,roothandle)
+
+        </script>
+    </body>
+</html>

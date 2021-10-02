@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const {useState}=React
+        function Friendslist(props)
+        {
+            const [names,setNames]=useState(['siva','naveen','ravi','sreenu'])
+            const removeItem=(name)=>{
+            const index=names.indexOf(name)
+            names.splice(index,1)
+            console.log(names)
+            setNames(names)
+            }
+            return (
+                <div>
+                    <h1>Listing of friends-{names.length}</h1>
+                    <ul>
+                        {names.map((ele,i)=>
+                            {
+                                return <li key={i}>{ele}<button onClick={()=>{removeItem(ele)}}>remove</button></li>
+                            })}
+                        </ul>
+                    </div>
+            )
+        }
+
+        ReactDOM.render(<Friendslist />,roothandle)
+
+
+        </script>
+    </body>
+</html>

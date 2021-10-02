@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const {useState,useEffect}=React
+        function Booktickets(props)
+        {
+            const[count,setcount]=useState(1)
+            useEffect(()=>{
+                alert('component render')
+            },[])
+            useEffect(()=>{
+                document.title=`you booked ${count} tickets`
+            })
+            const incerement=()=>
+            {
+                setcount(count+1)
+            }
+            return (
+                <div>
+                <h2>You have booked {count} tickets</h2>
+                <button onClick={incerement}>+1</button>
+                </div>
+            )
+        }
+        ReactDOM.render(<Booktickets />,roothandle)
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <style>
+      
+   
+ ul{
+           list-style-type: none;
+           padding: 0;
+           margin: 0;
+           background-color: green;
+           overflow: hidden;
+           width: 100%;
+           top : 0;
+           position: sticky;
+       }
+       li{
+           float :left;
+           border-right: 1px solid blue;
+       }
+       li:last-child{
+           border-right: none;
+           background-color: darkred;
+       }
+       li a{
+             display: block;
+            text-align: center;
+            color: white;
+            padding: 14px 16px;
+            text-decoration: none;
+       }
+       li:hover{
+           background-color: yellowgreen;
+       }
+       .active{
+           background-color: green;
+       }
+
+
+
+    </style>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        function App(props)
+        {
+            return (
+                <div>
+                <div>
+                    <h1>Vertical Nav bar Css styles</h1>
+                    <p>Namo Shivaiah </p>
+                    <p>Jai Sree Ram</p>
+                    <p>Jai Bolo Ganesh Maharaj</p>
+                </div>
+                <ul>
+                <li class= 'active'><a href=''>Home</a></li>
+                <li><a href=''>Contacts</a></li>
+                <li><a href=''>Gallery</a></li>
+                <li><a href=''>About</a></li>
+                </ul>
+                <div style={{marginTop : '45px', backgroundColor :'chocolate'}}>
+                <h1>Vertical Nav bar Css styles</h1>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                <p>Namo Shivaiah </p>
+                <p>Jai Sree Ram</p>
+                <p>Jai Bolo Ganesh Maharaj</p>
+                </div>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />,roothandle)
+
+
+        </script>
+    </body>   
+</html>

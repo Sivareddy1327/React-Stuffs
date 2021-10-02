@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basic structure</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.js"></script>
+        <script type="text/babel">
+        const roothandle=document.getElementById('root')
+        const {useState}=React
+        const usersdata=[{id:1,name:'user1'},
+    {id:2,name:'user2'},
+{id:3,name:'user3'}]
+        function Userlist(props)
+        {
+            const [users,setusers]=useState(usersdata)
+            const removeItem=(id)=>
+            {
+                const confirmremove=confirm('Are you sure?')
+                if(confirmremove)
+                {
+                    const result=users.filter((ele)=>
+                {
+                    return ele.id !== id
+                })
+                setusers(result)
+
+                }
+             
+            }
+            return (
+                <div>
+                    <h1>Listing users-{users.length}</h1>
+                    <ul>
+                        {users.map((ele)=>
+                            {
+
+                                return <li key={ele.id}>{ele.name}
+                                    <button onClick={()=>{removeItem(ele.id)}}>remove</button>
+                                    </li>
+                            })}
+                        </ul>
+                    </div>
+            )
+        }
+
+        ReactDOM.render(<Userlist />,roothandle)
+
+
+        </script>
+    </body>
+</html>
